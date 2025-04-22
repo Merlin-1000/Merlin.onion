@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merlinbuy</title>
+  <style>
+    body {
+      background: #121212;
+      color: #00ffcc;
+      font-family: 'Share Tech Mono', monospace;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .product-list {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      text-align: left;
+      width: 80%;
+      margin: auto;
+    }
+
+    .product-item {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffcc44;
+    }
+
+    .product-item img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .product-item h3 {
+      font-size: 1.5em;
+    }
+
+    .product-item p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    .button {
+      background-color: #00ffcc;
+      padding: 10px 20px;
+      color: black;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    .button:hover {
+      background-color: #00bfa6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Willkommen bei Merlinbuy</h1>
+    <p>Dein Shop für coole Produkte!</p>
+  </header>
+
+  <div class="product-list" id="productList">
+    <!-- Produkte werden hier dynamisch geladen -->
+  </div>
+
+  <script>
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+
+    // Produktliste laden
+    function loadProductList() {
+      const productList = document.getElementById('productList');
+      productList.innerHTML = '';
+      products.forEach(product => {
+        const productItem = document.createElement('div');
+        productItem.classList.add('product-item');
+        productItem.innerHTML = `
+          <img src="${product.image}" alt="${product.name}" />
+          <h3>${product.name}</h3>
+          <p>Preis: €${product.price}</p>
+          <a href="https://www.paypal.com" class="button" target="_blank">Jetzt kaufen</a>
+        `;
+        productList.appendChild(productItem);
+      });
+    }
+
+    loadProductList();
+  </script>
+</body>
+</html>
