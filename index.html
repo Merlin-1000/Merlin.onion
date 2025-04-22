@@ -1,203 +1,228 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Merlin Markt</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1508780709619-79562169bc64') no-repeat center center fixed;
-      background-size: cover;
-      color: #00ffcc;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merlin Markt</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0 0 10px #00ffcc;
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #111;
+            color: #fff;
+            overflow-x: hidden;
+        }
 
-    h1 {
-      font-size: 2.5em;
-      color: #00ffcc;
-      text-shadow: 0 0 10px #00ffcc;
-      margin: 0;
-    }
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
 
-    .secret-login {
-      cursor: pointer;
-      color: #00ffcc;
-      background: none;
-      border: none;
-      font-size: 1em;
-      text-shadow: 0 0 5px #00ffcc;
-    }
+        .overlay-content {
+            text-align: center;
+            color: #fff;
+        }
 
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 100px 20px 40px;
-    }
+        .overlay h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
 
-    .product-card {
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffcc;
-      border-radius: 10px;
-      box-shadow: 0 0 15px #00ffcc88;
-      margin: 15px;
-      padding: 15px;
-      width: 200px;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
+        .overlay p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
 
-    .product-card:hover {
-      transform: scale(1.05);
-    }
+        .overlay button {
+            background-color: #FF1744;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-    .product-card img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
+        .overlay button:hover {
+            background-color: #FF4081;
+        }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.8);
-      color: #00ffcc;
-      font-size: 0.9em;
-      box-shadow: 0 -2px 10px #00ffcc55;
-    }
+        /* Products Section */
+        .products-section {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px;
+            margin-top: 50px;
+            z-index: 500;
+        }
 
-    /* Admin-Bereich */
-    #adminLogin, #adminPanel {
-      display: none;
-      max-width: 500px;
-      margin: 50px auto;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.8);
-      border: 2px solid #00ffcc;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #00ffccaa;
-    }
+        .product-card {
+            background-color: #333;
+            border-radius: 20px;
+            width: 300px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
 
-    input, button, textarea {
-      width: 100%;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      font-family: 'Orbitron', sans-serif;
-    }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
 
-    input, textarea {
-      background: #111;
-      color: #00ffcc;
-    }
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
 
-    button {
-      background: #00ffcc;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 10px #00ffcc88;
-    }
+        .product-card .product-info {
+            padding: 20px;
+            text-align: center;
+        }
 
-    button:hover {
-      background: #00ffaa;
-    }
-  </style>
+        .product-card .product-info h2 {
+            font-size: 1.6em;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .product-card .product-info p {
+            font-size: 1em;
+            color: #bbb;
+            margin-bottom: 15px;
+        }
+
+        .product-card .product-info .price {
+            font-size: 1.4em;
+            color: #FF1744;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .product-card .product-info .buy-btn {
+            padding: 12px 25px;
+            background-color: #FF1744;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-card .product-info .buy-btn:hover {
+            background-color: #FF4081;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .product-card {
+                width: 90%;
+            }
+        }
+
+        /* Button to show products */
+        .show-products-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px 40px;
+            background-color: #FF1744;
+            color: white;
+            font-size: 1.8em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 1001;
+            transition: background-color 0.3s ease;
+        }
+
+        .show-products-btn:hover {
+            background-color: #FF4081;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>Merlin Markt</h1>
-    <button class="secret-login" onclick="document.getElementById('adminLogin').style.display='block'">Zugang</button>
-  </header>
-
-  <div class="products" id="productArea">
-    <!-- Beispielprodukte -->
-    <div class="product-card">
-      <img src="https://via.placeholder.com/200x150" alt="Produkt 1">
-      <h3>Leuchtender Zauberstab</h3>
-      <p>Bring Licht ins Dunkel – mystisch & stilvoll.</p>
+    <!-- Overlay when page loads -->
+    <div class="overlay" id="overlay">
+        <div class="overlay-content">
+            <h1>Willkommen bei Merlin Markt</h1>
+            <p>Die besten Produkte für dich – jetzt entdecken!</p>
+            <button onclick="showProducts()">Los geht's</button>
+        </div>
     </div>
-    <div class="product-card">
-      <img src="https://via.placeholder.com/200x150" alt="Produkt 2">
-      <h3>Magischer Umhang</h3>
-      <p>Für stilvolle Schattenwanderer.</p>
+
+    <!-- Button to show products -->
+    <button class="show-products-btn" id="showProductsBtn" style="display: none;" onclick="showProducts()">Produkte anzeigen</button>
+
+    <!-- Products Section -->
+    <div class="products-section" id="productsSection">
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x250" alt="Produkt 1">
+            <div class="product-info">
+                <h2>Produkt 1</h2>
+                <p>Beschreibung des Produkts 1.</p>
+                <div class="price">€19.99</div>
+                <button class="buy-btn" onclick="alert('Produkt 1 gekauft!')">Kaufen</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x250" alt="Produkt 2">
+            <div class="product-info">
+                <h2>Produkt 2</h2>
+                <p>Beschreibung des Produkts 2.</p>
+                <div class="price">€29.99</div>
+                <button class="buy-btn" onclick="alert('Produkt 2 gekauft!')">Kaufen</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x250" alt="Produkt 3">
+            <div class="product-info">
+                <h2>Produkt 3</h2>
+                <p>Beschreibung des Produkts 3.</p>
+                <div class="price">€39.99</div>
+                <button class="buy-btn" onclick="alert('Produkt 3 gekauft!')">Kaufen</button>
+            </div>
+        </div>
+
+        <!-- Weitere Produkte können hier hinzugefügt werden -->
     </div>
-  </div>
 
-  <!-- Geheimer Admin Login -->
-  <div id="adminLogin">
-    <h2>Geheimer Zugang</h2>
-    <input type="password" id="adminPass" placeholder="Passwort eingeben" />
-    <button onclick="checkAdmin()">Login</button>
-  </div>
+    <script>
+        function showProducts() {
+            document.getElementById('overlay').style.opacity = '0';
+            setTimeout(function() {
+                document.getElementById('overlay').style.display = 'none';
+                document.getElementById('productsSection').style.display = 'flex';
+            }, 500);
 
-  <!-- Admin Panel -->
-  <div id="adminPanel">
-    <h2>Produkt hinzufügen</h2>
-    <input type="text" id="productName" placeholder="Produktname" />
-    <textarea id="productDesc" placeholder="Beschreibung"></textarea>
-    <input type="file" id="productImg" accept="image/*" />
-    <button onclick="addProduct()">Hinzufügen</button>
-  </div>
-
-  <footer>
-    &copy; 2025 Merlin Markt – Mystik trifft Neon
-  </footer>
-
-  <script>
-    const correctPassword = "merlinAdmin2025";
-
-    function checkAdmin() {
-      const entered = document.getElementById("adminPass").value;
-      if (entered === correctPassword) {
-        document.getElementById("adminLogin").style.display = "none";
-        document.getElementById("adminPanel").style.display = "block";
-      } else {
-        alert("Falsches Passwort!");
-      }
-    }
-
-    function addProduct() {
-      const name = document.getElementById("productName").value;
-      const desc = document.getElementById("productDesc").value;
-      const imgInput = document.getElementById("productImg");
-      const file = imgInput.files[0];
-
-      if (!name || !desc || !file) {
-        alert("Bitte alle Felder ausfüllen!");
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const newCard = document.createElement("div");
-        newCard.className = "product-card";
-        newCard.innerHTML = `
-          <img src="${e.target.result}" alt="${name}">
-          <h3>${name}</h3>
-          <p>${desc}</p>
-        `;
-        document.getElementById("productArea").appendChild(newCard);
-        document.getElementById("productName").value = '';
-        document.getElementById("productDesc").value = '';
-        imgInput.value = '';
-      };
-      reader.readAsDataURL(file);
-    }
-  </script>
-
+            document.getElementById('showProductsBtn').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
