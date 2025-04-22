@@ -1,56 +1,119 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 100px;
-        }
-        input {
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            border: none;
-            background-color: #333;
-            color: white;
-            width: 200px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #00ff99;
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merlinbuy</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ffe4e1, #e0ffff);
+      color: #333;
+    }
+
+    header {
+      background: #ff69b4;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .shop-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .product:hover {
+      transform: scale(1.03);
+    }
+
+    .product img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .product-name {
+      margin: 10px 0;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .price {
+      color: #ff69b4;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .buy-btn {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .paypal { background: #ffc439; }
+    .klarna { background: #ffb6c1; }
+    .bitcoin { background: #f7931a; color: white; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8em;
+      color: #888;
+    }
+  </style>
 </head>
 <body>
-    <h2>Admin Login</h2>
-    <form id="loginForm" onsubmit="return checkPassword()">
-        <input type="password" id="password" placeholder="Passwort" required><br>
-        <button type="submit">Anmelden</button>
-    </form>
 
-    <script>
-        function checkPassword() {
-            const password = document.getElementById('password').value;
-            const correctPassword = 'meinAdminPasswort'; // Ersetze dies durch dein gewünschtes Passwort
+<header>
+  Willkommen bei Merlinbuy – Dein Shop für coole Produkte!
+</header>
 
-            if (password === correctPassword) {
-                window.location.href = 'admin_dashboard.html'; // Weiterleitung zum Admin-Dashboard
-                return false;
-            } else {
-                alert('Falsches Passwort!');
-                return false;
-            }
-        }
-    </script>
+<div class="shop-container">
+  <!-- Wiederhole diesen Block 30x mit individuellen Bildern/Namen/Preisen -->
+  <!-- Produkt 1 -->
+  <div class="product">
+    <img src="https://via.placeholder.com/200x150" alt="Produktbild" />
+    <div class="product-name">Produkt 1</div>
+    <div class="price">€19,99</div>
+    <div class="buttons">
+      <button class="buy-btn paypal">Mit PayPal kaufen</button>
+      <button class="buy-btn klarna">Mit Klarna kaufen</button>
+      <button class="buy-btn bitcoin">Mit Bitcoin kaufen</button>
+    </div>
+  </div>
+  <!-- Kopiere bis Produkt 30 -->
+  <!-- ... -->
+</div>
+
+<footer>
+  &copy; 2025 Merlinbuy – Alle Rechte vorbehalten.
+</footer>
+
 </body>
 </html>
