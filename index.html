@@ -1,230 +1,203 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merlin Markt</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Orbitron', sans-serif;
-            background: url('background-forest.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-        }
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            box-shadow: 0 0 10px 5px rgba(0, 255, 255, 0.3);
-            padding: 15px;
-            z-index: 100;
-        }
-        header h1 {
-            font-size: 3em;
-            color: #00ff99;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 0;
-        }
-        .nav {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .nav a {
-            color: #00ff99;
-            text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .nav a:hover {
-            background-color: #00ff99;
-            color: #1a1a1a;
-            border-radius: 5px;
-        }
-        .product {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px;
-            padding-top: 80px;
-        }
-        .product-card {
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-            padding: 20px;
-            margin: 10px;
-            width: 200px;
-            text-align: center;
-            box-shadow: 0 0 15px 5px rgba(0, 255, 255, 0.5);
-            transition: transform 0.3s;
-        }
-        .product-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .product-card:hover {
-            transform: scale(1.1);
-        }
-        footer {
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            text-align: center;
-            color: #00ff99;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Merlin Markt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1508780709619-79562169bc64') no-repeat center center fixed;
+      background-size: cover;
+      color: #00ffcc;
+    }
 
-        /* Adminbereich Styling */
-        .admin-section {
-            display: none;
-            margin-top: 100px;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-        }
-        .admin-login-form input {
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            border: none;
-            background-color: #333;
-            color: white;
-            width: 200px;
-        }
-        .admin-login-form button {
-            padding: 10px 20px;
-            background-color: #00ff99;
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .admin-dashboard {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .product-form input, .product-form textarea {
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            border: none;
-            width: 100%;
-        }
-        .product-form button {
-            padding: 10px 20px;
-            background-color: #00ff99;
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .product-list {
-            margin-top: 30px;
-        }
-        .product-item {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #444;
-            border-radius: 5px;
-        }
-    </style>
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #00ffcc;
+      text-shadow: 0 0 10px #00ffcc;
+      margin: 0;
+    }
+
+    .secret-login {
+      cursor: pointer;
+      color: #00ffcc;
+      background: none;
+      border: none;
+      font-size: 1em;
+      text-shadow: 0 0 5px #00ffcc;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 100px 20px 40px;
+    }
+
+    .product-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffcc88;
+      margin: 15px;
+      padding: 15px;
+      width: 200px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #00ffcc;
+      font-size: 0.9em;
+      box-shadow: 0 -2px 10px #00ffcc55;
+    }
+
+    /* Admin-Bereich */
+    #adminLogin, #adminPanel {
+      display: none;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #00ffcc;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00ffccaa;
+    }
+
+    input, button, textarea {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    input, textarea {
+      background: #111;
+      color: #00ffcc;
+    }
+
+    button {
+      background: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffcc88;
+    }
+
+    button:hover {
+      background: #00ffaa;
+    }
+  </style>
 </head>
 <body>
-    <!-- Öffentliche Verkaufsseite -->
-    <header>
-        <h1>Merlin Markt</h1>
-        <div class="nav">
-            <a href="#">Home</a>
-            <a href="#">Produkte</a>
-            <a href="#">Kontakt</a>
-            <a href="javascript:void(0);" onclick="toggleAdmin()">Adminbereich</a>
-        </div>
-    </header>
 
-    <div class="product">
-        <!-- Beispielprodukte -->
-        <div class="product-card">
-            <img src="product1.jpg" alt="Produkt 1">
-            <h3>Produkt 1</h3>
-            <p>Beschreibung des Produkts</p>
-            <button>Jetzt kaufen</button>
-        </div>
-        <div class="product-card">
-            <img src="product2.jpg" alt="Produkt 2">
-            <h3>Produkt 2</h3>
-            <p>Beschreibung des Produkts</p>
-            <button>Jetzt kaufen</button>
-        </div>
-        <!-- Weitere Produkte hinzufügen -->
+  <header>
+    <h1>Merlin Markt</h1>
+    <button class="secret-login" onclick="document.getElementById('adminLogin').style.display='block'">Zugang</button>
+  </header>
+
+  <div class="products" id="productArea">
+    <!-- Beispielprodukte -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150" alt="Produkt 1">
+      <h3>Leuchtender Zauberstab</h3>
+      <p>Bring Licht ins Dunkel – mystisch & stilvoll.</p>
     </div>
-
-    <footer>
-        <p>&copy; 2025 Merlin Markt. Alle Rechte vorbehalten.</p>
-    </footer>
-
-    <!-- Adminbereich (sichtbar, wenn Login korrekt ist) -->
-    <div class="admin-section" id="adminSection">
-        <!-- Admin Login Form -->
-        <div class="admin-login-form" id="adminLoginForm">
-            <h2>Admin Login</h2>
-            <input type="password" id="adminPassword" placeholder="Passwort" required><br>
-            <button onclick="adminLogin()">Login</button>
-        </div>
-
-        <!-- Admin Dashboard (wird angezeigt nach erfolgreichem Login) -->
-        <div class="admin-dashboard" id="adminDashboard" style="display: none;">
-            <h2>Admin Dashboard</h2>
-            <div class="product-form">
-                <h3>Neues Produkt hinzufügen</h3>
-                <form action="javascript:void(0);">
-                    <input type="text" name="product-name" placeholder="Produktname" required><br>
-                    <textarea name="product-description" placeholder="Produktbeschreibung" required></textarea><br>
-                    <input type="file" name="product-image" required><br>
-                    <button type="submit">Produkt hinzufügen</button>
-                </form>
-            </div>
-
-            <div class="product-list">
-                <h3>Produktliste</h3>
-                <div class="product-item">
-                    <h4>Produkt 1</h4>
-                    <p>Beschreibung des Produkts</p>
-                    <button>Bearbeiten</button>
-                    <button>Löschen</button>
-                </div>
-                <div class="product-item">
-                    <h4>Produkt 2</h4>
-                    <p>Beschreibung des Produkts</p>
-                    <button>Bearbeiten</button>
-                    <button>Löschen</button>
-                </div>
-            </div>
-        </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150" alt="Produkt 2">
+      <h3>Magischer Umhang</h3>
+      <p>Für stilvolle Schattenwanderer.</p>
     </div>
+  </div>
 
-    <script>
-        const correctPassword = 'meinAdminPasswort'; // Ersetze das Passwort hier
+  <!-- Geheimer Admin Login -->
+  <div id="adminLogin">
+    <h2>Geheimer Zugang</h2>
+    <input type="password" id="adminPass" placeholder="Passwort eingeben" />
+    <button onclick="checkAdmin()">Login</button>
+  </div>
 
-        function toggleAdmin() {
-            document.getElementById('adminSection').style.display = 'block';
-            document.getElementById('adminLoginForm').style.display = 'block';
-            document.getElementById('adminDashboard').style.display = 'none';
-        }
+  <!-- Admin Panel -->
+  <div id="adminPanel">
+    <h2>Produkt hinzufügen</h2>
+    <input type="text" id="productName" placeholder="Produktname" />
+    <textarea id="productDesc" placeholder="Beschreibung"></textarea>
+    <input type="file" id="productImg" accept="image/*" />
+    <button onclick="addProduct()">Hinzufügen</button>
+  </div>
 
-        function adminLogin() {
-            const password = document.getElementById('adminPassword').value;
+  <footer>
+    &copy; 2025 Merlin Markt – Mystik trifft Neon
+  </footer>
 
-            if (password === correctPassword) {
-                document.getElementById('adminLoginForm').style.display = 'none';
-                document.getElementById('adminDashboard').style.display = 'block';
-            } else {
-                alert('Falsches Passwort!');
-            }
-        }
-    </script>
+  <script>
+    const correctPassword = "merlinAdmin2025";
+
+    function checkAdmin() {
+      const entered = document.getElementById("adminPass").value;
+      if (entered === correctPassword) {
+        document.getElementById("adminLogin").style.display = "none";
+        document.getElementById("adminPanel").style.display = "block";
+      } else {
+        alert("Falsches Passwort!");
+      }
+    }
+
+    function addProduct() {
+      const name = document.getElementById("productName").value;
+      const desc = document.getElementById("productDesc").value;
+      const imgInput = document.getElementById("productImg");
+      const file = imgInput.files[0];
+
+      if (!name || !desc || !file) {
+        alert("Bitte alle Felder ausfüllen!");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const newCard = document.createElement("div");
+        newCard.className = "product-card";
+        newCard.innerHTML = `
+          <img src="${e.target.result}" alt="${name}">
+          <h3>${name}</h3>
+          <p>${desc}</p>
+        `;
+        document.getElementById("productArea").appendChild(newCard);
+        document.getElementById("productName").value = '';
+        document.getElementById("productDesc").value = '';
+        imgInput.value = '';
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+
 </body>
 </html>
