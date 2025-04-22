@@ -1,94 +1,119 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Merlinbuy</title>
   <style>
     body {
-      background: #121212;
-      color: #00ffcc;
-      font-family: 'Share Tech Mono', monospace;
-      text-align: center;
-      padding: 50px;
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ffe4e1, #e0ffff);
+      color: #333;
     }
 
-    .product-list {
-      margin-top: 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-      text-align: left;
-      width: 80%;
-      margin: auto;
-    }
-
-    .product-item {
-      background: #222;
+    header {
+      background: #ff69b4;
+      color: white;
       padding: 20px;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .shop-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .product {
+      background: white;
       border-radius: 10px;
-      box-shadow: 0 0 15px #00ffcc44;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s ease;
     }
 
-    .product-item img {
+    .product:hover {
+      transform: scale(1.03);
+    }
+
+    .product img {
       width: 100%;
-      border-radius: 5px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 6px;
     }
 
-    .product-item h3 {
-      font-size: 1.5em;
-    }
-
-    .product-item p {
+    .product-name {
+      margin: 10px 0;
       font-size: 1.2em;
-      margin-top: 10px;
+      font-weight: bold;
     }
 
-    .button {
-      background-color: #00ffcc;
-      padding: 10px 20px;
-      color: black;
+    .price {
+      color: #ff69b4;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .buy-btn {
+      padding: 10px;
+      border: none;
       border-radius: 5px;
-      text-decoration: none;
-      margin-top: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
     }
 
-    .button:hover {
-      background-color: #00bfa6;
+    .paypal { background: #ffc439; }
+    .klarna { background: #ffb6c1; }
+    .bitcoin { background: #f7931a; color: white; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8em;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Willkommen bei Merlinbuy</h1>
-    <p>Dein Shop für coole Produkte!</p>
-  </header>
 
-  <div class="product-list" id="productList">
-    <!-- Produkte werden hier dynamisch geladen -->
+<header>
+  Willkommen bei Merlinbuy – Dein Shop für coole Produkte!
+</header>
+
+<div class="shop-container">
+  <!-- Wiederhole diesen Block 30x mit individuellen Bildern/Namen/Preisen -->
+  <!-- Produkt 1 -->
+  <div class="product">
+    <img src="https://via.placeholder.com/200x150" alt="Produktbild" />
+    <div class="product-name">Produkt 1</div>
+    <div class="price">€19,99</div>
+    <div class="buttons">
+      <button class="buy-btn paypal">Mit PayPal kaufen</button>
+      <button class="buy-btn klarna">Mit Klarna kaufen</button>
+      <button class="buy-btn bitcoin">Mit Bitcoin kaufen</button>
+    </div>
   </div>
+  <!-- Kopiere bis Produkt 30 -->
+  <!-- ... -->
+</div>
 
-  <script>
-    const products = JSON.parse(localStorage.getItem('products')) || [];
+<footer>
+  &copy; 2025 Merlinbuy – Alle Rechte vorbehalten.
+</footer>
 
-    // Produktliste laden
-    function loadProductList() {
-      const productList = document.getElementById('productList');
-      productList.innerHTML = '';
-      products.forEach(product => {
-        const productItem = document.createElement('div');
-        productItem.classList.add('product-item');
-        productItem.innerHTML = `
-          <img src="${product.image}" alt="${product.name}" />
-          <h3>${product.name}</h3>
-          <p>Preis: €${product.price}</p>
-          <a href="https://www.paypal.com" class="button" target="_blank">Jetzt kaufen</a>
-        `;
-        productList.appendChild(productItem);
-      });
-    }
-
-    loadProductList();
-  </script>
 </body>
 </html>
